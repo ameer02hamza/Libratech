@@ -1,23 +1,27 @@
-import logo from './logo.svg';
 import './App.css';
+import { useState } from 'react';
 
 function App() {
+  const [count, setcount] = useState(1)
+
+  const add=() =>{
+    setcount(count+1);
+    if(count ==1000){
+      setcount(1000)
+    }
+  }
+  const sub = () =>{
+    setcount(count -1)
+
+    if(count <=0){
+      setcount(0)
+    }
+  }
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+     <button className="add" onClick={add}>+</button>
+     <input className="userInput" type="number" value={count}  disabled />
+     <button className="sub" onClick={sub}>-</button>
     </div>
   );
 }
